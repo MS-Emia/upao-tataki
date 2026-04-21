@@ -1281,6 +1281,8 @@ img {
 #final-score:after {
   content: attr(title);
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   text-align: center;
   display: block;
