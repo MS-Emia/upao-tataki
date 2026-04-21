@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>うぱお叩き</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="upao-game.css">
+
+    <link rel="icon" href="img/favicon_upa.ico" type="image/x-icon">
+</head>
+<body>
+  <div id="start-screen">
+    <img src="img/start_game.png" alt="スタート" id="start-image">
+  </div>
+
+  <div id="game-container">
+    <div id="sky-layer">
+
+      <div id="sky-haze"></div>
+      <div id="cloud-layer"></div>
+
+      <div class="bird"></div>
+      <div class="bird"></div>
+      <div class="bird"></div>
+      <div class="bird"></div>
+      <div class="bird"></div>
+    </div>
+
+    <div id="island"></div>
+
+    <canvas id="sea-canvas-bg"></canvas>
+    <canvas id="sea-canvas"></canvas>
+
+    <div id="sea-shadow-overlay"></div>
+
+    <div id="sea-layer">
+      <div id="sea-body"></div>
+
+      <div id="sea-reflection"></div>
+      <div id="sea-reflection2"></div>
+
+      <div id="wave-mid"></div>
+      <div id="fever-indicator"></div>
+    </div>
+
+    <div id="wave-front"></div>
+    <div id="wave-front-f"></div>
+    <div id="wave-front-f1"></div>
+    <div id="wave-front-f2"></div>
+    <div id="wave-front-f3"></div>
+    <div id="wave-front-f4"></div>
+    <div id="wave-front-f5"></div>
+
+    <div id="vignette"></div>
+
+    <div id="fever-overlay"></div>
+    <div id="fever-text">FEVER!</div>
+
+    <div id="btn-upao-clip">
+      <div id="btn-upao"></div>
+    </div>
+
+    <div id="ui-layer">
+      <div id="time-display">残り: <span id="time">60</span>秒</div>
+      <div id="score-display">スコア: <span id="score">0</span></div>
+
+      <div id="level-bar" data-prev-level="1">
+        <div id="level-label">Lv 1</div>
+        <div id="level-bar-track">
+          <img src="img/gauge_bg.PNG" id="gauge-bg-img" draggable="false">
+          <div id="level-bar-fill"></div>
+        </div>
+      </div>
+
+      <div id="start-btn-wrapper">
+        <div id="start-banner">
+          <div id="game-title">うぱお叩き</div>
+          <div id="game-sub">海から出てくるうぱおを叩こう！</div>
+          <span id="start-btn">タップでスタート</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-area">
+      <div class="hole" data-index="0"><div class="hole-clip"><div class="upao-container"></div></div></div>
+      <div class="hole" data-index="1"><div class="hole-clip"><div class="upao-container"></div></div></div>
+      <div class="hole" data-index="2"><div class="hole-clip"><div class="upao-container"></div></div></div>
+      <div class="hole" data-index="3"><div class="hole-clip"><div class="upao-container"></div></div></div>
+      <div class="hole" data-index="4"><div class="hole-clip"><div class="upao-container"></div></div></div>
+      <div class="hole" data-index="5"><div class="hole-clip"><div class="upao-container"></div></div></div>
+      <div class="hole" data-index="6"><div class="hole-clip"><div class="upao-container"></div></div></div>
+      <div class="hole" data-index="7"><div class="hole-clip"><div class="upao-container"></div></div></div>
+    </div>
+
+    <img src="img/hammer.png" alt="ハンマー" id="hammer" draggable="false">
+
+    <div id="combo-display"><span id="combo">0</span> コンボ</div>
+
+    <div id="result-screen">
+      <div id="result-content">
+        <span class="star-bl">✦</span>
+        <span class="star-br">✦</span>
+        <div class="content-body">
+          <h2 id="result-title">RESULT</h2>
+          <div class="star-divider">✦ ✦ ✦</div>
+          <div class="result-row" id="score-row">
+            <span class="result-label">スコア</span>
+            <span class="result-value"><span id="final-score">0</span></span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">最高コンボ</span>
+            <span class="result-value"><span id="final-combo">0</span></span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">TOPスコア</span>
+            <span class="result-value">
+              <div class="best-row">🥇 <span id="final-best1">---</span></div>
+              <div class="best-row">🥈 <span id="final-best2">---</span></div>
+              <div class="best-row">🥉 <span id="final-best3">---</span></div>
+            </span>
+          </div>
+          <div id="result-btns">
+            <button id="retry-btn">再プレイ</button>
+            <button id="share-btn">シェア</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button id="mute-btn">🔇</button>
+
+  <script src="upao-game.js"></script>
+</body>
+</html>
