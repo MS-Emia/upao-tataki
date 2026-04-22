@@ -726,11 +726,13 @@ function setEventListeners() {
     }
   );
 
+   /*
    elements.shareBtn.addEventListener("click", function(e) {
      e.stopPropagation();
 
      shareScore();
 });
+*/
 
   elements.holes.forEach(function(hole) {
     hole.addEventListener("pointerdown", function(e) {
@@ -1867,6 +1869,12 @@ function animateTimeUp(callback) {
 function showResultScreen() {
   saveHighScore(gameState.score);
   let best = getHighScores();
+
+  let shareText = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
+  let shareUrl = "https://twitter.com/intent/tweet?text=" 
+    + encodeURIComponent(shareText) 
+    + "&url=" + encodeURIComponent(window.location.href);
+  elements.shareBtn.setAttribute("onclick", "window.open('" + shareUrl + "','_blank')");
 
   if (elements.finalScore) {
     elements.finalScore.textContent = gameState.score;
