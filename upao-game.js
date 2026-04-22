@@ -1871,7 +1871,7 @@ function showResultScreen() {
   let best = getHighScores();
 
   let shareText = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-  let shareUrl = "https://twitter.com/intent/tweet?text=" 
+  let shareUrl = "https://x.com/intent/tweet?text=" 
     + encodeURIComponent(shareText) 
     + "&url=" + encodeURIComponent(window.location.href);
   elements.shareBtn.setAttribute("onclick", "window.open('" + shareUrl + "','_blank')");
