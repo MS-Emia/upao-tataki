@@ -727,14 +727,16 @@ function setEventListeners() {
   );
 
    
-   elements.shareBtn.addEventListener("click", function(e) {
-    e.stopPropagation();
+   elements.shareBtn.addEventListener("pointerdown", function(e) {
+ 　　 if (e.pointerType === "mouse" && e.button !== 0) return;
+ 　　 e.stopPropagation();
+ 　　 e.preventDefault();
+　　
+ 　　 let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
+　　  let shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href);
 
-    let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-    let shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href);
-  
-    window.open(shareUrl, "_blank", "noopener,noreferrer");
-});
+　　  window.open(shareUrl, "_blank", "noopener,noreferrer");
+　　});
 
 
   elements.holes.forEach(function(hole) {
@@ -1869,16 +1871,16 @@ function animateTimeUp(callback) {
   }, 2700);
 }
 
+/* 最悪これで
 function shareScore() {
   let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫\n" + window.location.href;
   
-  // Web Share API（iOS Safari対応）を優先
   if (navigator.share) {
     navigator.share({
       text: text,
     }).catch(function() {});
     return;
-  }
+  }*/
   
   // フォールバック：twitter.comを使用
   let shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text);
