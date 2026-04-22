@@ -727,7 +727,7 @@ function setEventListeners() {
   );
 
    
-   elements.shareBtn.addEventListener("pointerdown", function(e) {
+   elements.shareBtn.addEventListener("click", function(e) {
  　　 if (e.pointerType === "mouse" && e.button !== 0) return;
  　　 e.stopPropagation();
  　　 e.preventDefault();
