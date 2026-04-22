@@ -732,7 +732,7 @@ function setEventListeners() {
     e.preventDefault();
 
     let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-    let shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href);
+    let shareUrl = "https://x.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href);
 
     window.open(shareUrl, "_blank", "noopener,noreferrer");
   });
