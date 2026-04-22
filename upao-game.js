@@ -1869,11 +1869,22 @@ function animateTimeUp(callback) {
 function showResultScreen() {
   saveHighScore(gameState.score);
   let best = getHighScores();
-
-  let shareText = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-　let shareUrl = "https://x.com/intent/tweet?text=" 
-　  + encodeURIComponent(shareText + " https://ms-emia.github.io/upao-tataki/");
-　elements.shareBtn.href = shareUrl;
+　let shareText = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
+　let sharePageUrl = "https://ms-emia.github.io/upao-tataki/";
+　
+　if (navigator.share) {
+ 　 // iOSなどWeb Share API対応環境
+  　navigator.share({
+   　 title: "うぱお叩き",
+    　text: shareText,
+    　url: sharePageUrl,
+  　});
+　} else {
+ 　 // PC等はXで開く
+  　let shareUrl = "https://x.com/intent/tweet?text=" 
+   　 + encodeURIComponent(shareText + " " + sharePageUrl);
+  　window.open(shareUrl, "_blank");
+　};
 
   if (elements.finalScore) {
     elements.finalScore.textContent = gameState.score;
