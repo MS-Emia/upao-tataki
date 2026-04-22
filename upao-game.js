@@ -1871,10 +1871,9 @@ function showResultScreen() {
   let best = getHighScores();
 
   let shareText = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-  let shareUrl = "https://x.com/intent/tweet?text=" 
-    + encodeURIComponent(shareText) 
-    + "&url=" + encodeURIComponent(window.location.href);
-  elements.shareBtn.setAttribute("onclick", "window.open('" + shareUrl + "','_blank')");
+　let shareUrl = "https://x.com/intent/tweet?text=" 
+　  + encodeURIComponent(shareText + " https://ms-emia.github.io/upao-tataki/");
+　elements.shareBtn.href = shareUrl;
 
   if (elements.finalScore) {
     elements.finalScore.textContent = gameState.score;
