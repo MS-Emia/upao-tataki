@@ -2114,6 +2114,10 @@ function getHighScores() {
 
 function saveHighScore(score) {
   let scores = getHighScores();
+    if (score <= 0) {
+    return;
+  }
+  
   scores.push(score);
   scores.sort(function(a, b) {
     return b - a; 
