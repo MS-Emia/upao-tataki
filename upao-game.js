@@ -1869,23 +1869,23 @@ function animateTimeUp(callback) {
 function showResultScreen() {
   saveHighScore(gameState.score);
   let best = getHighScores();
-　let shareText = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-　let sharePageUrl = "https://ms-emia.github.io/upao-tataki/";
-　
-　if (navigator.share) {
- 　 // iOSなどWeb Share API対応環境
-  　navigator.share({
-   　 title: "うぱお叩き",
-    　text: shareText,
-    　url: sharePageUrl,
-  　});
-　} else {
- 　 // PC等はXで開く
-  　let shareUrl = "https://x.com/intent/tweet?text=" 
-   　 + encodeURIComponent(shareText + " " + sharePageUrl);
-  　window.open(shareUrl, "_blank");
-　};
-
+  
+   elements.shareBtn.onclick = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    let shareText = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
+    let sharePageUrl = "https://ms-emia.github.io/upao-tataki/";
+    if (navigator.share) {
+      navigator.share({
+        title: "うぱお叩き",
+        text: shareText,
+        url: sharePageUrl,
+      });
+    } else {
+      window.open("https://x.com/intent/tweet?text=" + encodeURIComponent(shareText + " " + sharePageUrl), "_blank");
+    }
+  };
+  
   if (elements.finalScore) {
     elements.finalScore.textContent = gameState.score;
     elements.finalScore.title = String(gameState.score);
@@ -2095,19 +2095,6 @@ function retryGame() {
   setTimeout(function() { 
     startGame();
   }, 0);
-}
-
-function shareScore() {
-  let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-  let url = "https://x.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href);
-  
-  let a = document.createElement("a");
-  a.href = url;
-  a.target = "_blank";
-  a.rel = "noopener noreferrer";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
 }
 
 
