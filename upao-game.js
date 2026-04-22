@@ -726,16 +726,11 @@ function setEventListeners() {
     }
   );
 
-  elements.shareBtn.addEventListener("pointerdown", function(e) {
-      if (e.pointerType === "mouse" && e.button !== 0) {
-        return;
-      }
+   elements.shareBtn.addEventListener("click", function(e) {
+     e.stopPropagation();
 
-      e.stopPropagation();
-
-      shareScore();
-    }
-  );
+     shareScore();
+});
 
   elements.holes.forEach(function(hole) {
     hole.addEventListener("pointerdown", function(e) {
