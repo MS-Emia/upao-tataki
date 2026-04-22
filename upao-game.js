@@ -14,7 +14,7 @@ const CONFIG = {
   feverRareRate: 30,
   feverBonus: 2,
   timeBonus: 5,
-  timeBonusCombo: 10,
+  timeBonusCombo: 16,
   
   gaugeUp: 7,
   gaugeUpRare: 15,
