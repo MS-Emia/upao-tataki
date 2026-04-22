@@ -7,7 +7,7 @@
 }
 
 html, body {
-    width: 100%;  /*初期値　上書きされる*/
+    width: 100%;
     height: var(--app-height, 100%);
     overflow: hidden;
     font-family: "Hiragino Sans", "Meiryo", sans-serif;
@@ -401,8 +401,8 @@ body {
     90deg,
     #FFB6C1 0%,
     #FF69B4 25%,
-    #597ab6 40%,
-    #3333d4 80%,
+    #8959b6 40%,
+    #3366d4 80%,
     #3386d4 100%
     );  /* かなたその瞳カラーに調整*/
   background-size: 300px 100%;
