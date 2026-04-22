@@ -1880,13 +1880,14 @@ function shareScore() {
       text: text,
     }).catch(function() {});
     return;
-  }*/
+  }
   
   // フォールバック：twitter.comを使用
   let shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text);
   window.open(shareUrl, "_blank");
 }
 
+*/
 function showResultScreen() {
   saveHighScore(gameState.score);
   let best = getHighScores();
