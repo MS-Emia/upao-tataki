@@ -2086,7 +2086,15 @@ function retryGame() {
 
 function shareScore() {
   let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-  window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href), "_blank");
+  let url = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href);
+  
+  let a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
 
