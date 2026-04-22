@@ -726,13 +726,13 @@ function setEventListeners() {
     }
   );
 
-   /*
+   
    elements.shareBtn.addEventListener("click", function(e) {
      e.stopPropagation();
 
      shareScore();
 });
-*/
+
 
   elements.holes.forEach(function(hole) {
     hole.addEventListener("pointerdown", function(e) {
@@ -1867,8 +1867,19 @@ function animateTimeUp(callback) {
 }
 
 function shareScore() {
-  let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-  window.open("https://x.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href), "_blank");
+  let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫\n" + window.location.href;
+  
+  // Web Share API（iOS Safari対応）を優先
+  if (navigator.share) {
+    navigator.share({
+      text: text,
+    }).catch(function() {});
+    return;
+  }
+  
+  // フォールバック：twitter.comを使用
+  let shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text);
+  window.open(shareUrl, "_blank");
 }
 
 function showResultScreen() {
