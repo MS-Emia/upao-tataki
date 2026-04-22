@@ -1870,7 +1870,7 @@ function animateTimeUp(callback) {
   }, 2700);
 }
 
-/* 最悪これで
+
 function shareScore() {
   let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫\n" + window.location.href;
   
@@ -1885,7 +1885,7 @@ function shareScore() {
   window.open(shareUrl, "_blank");
 }
 
-*/
+
 function showResultScreen() {
   saveHighScore(gameState.score);
   let best = getHighScores();
