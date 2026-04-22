@@ -1866,25 +1866,14 @@ function animateTimeUp(callback) {
   }, 2700);
 }
 
+function shareScore() {
+  let text = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
+  window.open("https://x.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(window.location.href), "_blank");
+}
+
 function showResultScreen() {
   saveHighScore(gameState.score);
   let best = getHighScores();
-  
-   elements.shareBtn.onclick = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    let shareText = "#うぱお叩きゲーム で " + gameState.score + " 点を獲得しました！💫";
-    let sharePageUrl = "https://ms-emia.github.io/upao-tataki/";
-    if (navigator.share) {
-      navigator.share({
-        title: "うぱお叩き",
-        text: shareText,
-        url: sharePageUrl,
-      });
-    } else {
-      window.open("https://x.com/intent/tweet?text=" + encodeURIComponent(shareText + " " + sharePageUrl), "_blank");
-    }
-  };
   
   if (elements.finalScore) {
     elements.finalScore.textContent = gameState.score;
